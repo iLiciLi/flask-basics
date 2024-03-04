@@ -143,7 +143,7 @@ def test_user_register_fail(client):
 
 
 def test_user_login_success(client):
-    res = client.post("/login", data={"username": "test", "password": "test"})
+    res = client.post("/login",data={"username": "test", "password": "test"})
     assert res.status_code == 200
 
 

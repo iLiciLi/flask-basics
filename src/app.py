@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import os
 
 from flask import Flask, request
@@ -67,6 +68,12 @@ def create_app(test_config=None):
 
     @app.route("/question/<int:id>", methods=["GET"])
     def get_question(id):
+        if id is None:
+            return NULL
+        question = dal.get_questions(id)
+        return question.to_dict()
+    
+    def post_question(id):
         question = dal.get_questions(id)
         return question.to_dict()
 
